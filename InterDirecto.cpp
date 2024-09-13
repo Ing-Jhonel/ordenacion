@@ -1,19 +1,40 @@
 #include <iostream>
 using namespace std;
 
+void interDirDer(int arr[], int n){
+	
+	for(int i=0; i<n-1; i++){
+		for(int j=0; j<n-i; i++){
+			if(arr[j]>arr[j+1]){
+				int aux = arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=aux;
+			}
+		}
+	}
+}
+
+void mostrarArreglo(int arr[]){
+	
+	for(int i=0; i<5; i++){
+		cout << arr[i] << " ";
+	}
+}
 int main(){
 	
-	int n, num;
+	int elementos, num;
 	
 	cout << "Indique la cantidad de elementos del arreglo: ";
-	cin >> n;
+	cin >> elementos;
 	cout << endl;
 	
-	int numeros[n];
-
-	for(int i=0; i<n; i++){
+	int numeros[elementos];
+	int copia[elementos];
+	
+	for(int i=0; i<elementos; i++){
 		cout << i+1 << ". elemento: ";
-		cin >> num;
+		cin >> numeros[i];
+		copia[i]=numeros[i];
 	}
 	
 	cout << endl << endl << endl;
@@ -34,7 +55,8 @@ int main(){
 		switch (opcion){
 			
 			case 'a':
-				
+				interDirDer(copia, elementos);
+				mostrarArreglo(copia);
 				break;
 			case 'b':
 				break;
