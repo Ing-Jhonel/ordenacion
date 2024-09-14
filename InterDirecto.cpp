@@ -45,7 +45,42 @@ void interDirSenial(int arr[], int n){
 		}
     }
 }
+void interDirBidireccional(int arr[], int n) { //va de izquierda a drecha mientras ordena y se devuelve pero se resta -1 al fin, y luego -1 al inicio y asi, hasta llegar al medio, hbiendo ordenado todo
+    int inicio = 0;
+    int fin = n-1;
+    bool intercambio;
+	
+	// el do-while ayuda a que se haga el mismo bucle cada iteracion
+    do {
+    	
+        intercambio = false;
 
+        for (int i=inicio; i<fin; i++) {
+            if (arr[i] > arr[i+1]) {
+                int aux = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = aux;
+                intercambio = true;
+            }
+        }
+        fin--;
+
+        if (!intercambio) break;
+
+        intercambio = false;
+
+        for (int i=fin; i>inicio; i--) {
+            if (arr[i]<arr[i-1]) {
+                int aux = arr[i];
+                arr[i] = arr[i-1];
+                arr[i-1] = aux;
+                intercambio = true;
+            }
+        }
+        inicio++;
+
+    } while (inicio <= fin);
+}
 void mostrarArreglo(int arr[], int n){
 	
 	for(int i=0; i<n; i++){
@@ -82,9 +117,9 @@ int main(){
 		cout << "e) Salir." << endl << endl;
 		
 		cin >> opcion;
+		cout << endl << endl;
 		
-		cout << endl << endl << "Antes" << endl << endl;
-		mostrarArreglo(numeros, elementos);
+		bool imprimir=true;
 		switch (opcion){
 			case 'a':
 				interDirDer(copia, elementos);
@@ -96,17 +131,24 @@ int main(){
 				interDirSenial(copia, elementos);
 				break;
 			case 'd':
+				interDirBidireccional(copia, elementos);
 				break;
 			case 'e':
+				imprimir=false;
 				break;
 			default:
 				cout << "Indique una opcion valida.";
+				imprimir=false;
 				break;
 		}
-		cout << endl << endl << "Despues" << endl << endl;
-		mostrarArreglo(copia, elementos);
-		cout << endl << endl;
+		if(imprimir){
+			cout << "Antes" << endl << endl;
+			mostrarArreglo(numeros, elementos);
+			cout << endl << endl << "Despues" << endl << endl;
+			mostrarArreglo(copia, elementos);
+		}
+		cout << endl << endl << endl;
 	} while (opcion != 'e');
-	cout << "Saliendo del programa...";
+	cout << "Saliendo del programa..." << endl << endl;
 	return 0;
 }
