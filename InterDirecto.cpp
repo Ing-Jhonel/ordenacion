@@ -13,7 +13,6 @@ void interDirDer(int arr[], int n){
 		}
 	}
 }
-
 void interDirIz(int arr[], int n){
 	
 	for(int i=n; i>0; i--){ 
@@ -26,6 +25,27 @@ void interDirIz(int arr[], int n){
 		}
 	}
 }
+void interDirSenial(int arr[], int n){
+    bool intercambio;
+    
+    for(int i=0; i<n-1; i++){
+        intercambio = false;
+        
+        for(int j=0; j<n-i; j++){
+            if(arr[j] > arr[j+1]){
+                int aux = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = aux;
+                intercambio = true;
+            }
+        }
+
+        if(!intercambio){
+        	break;	
+		}
+    }
+}
+
 void mostrarArreglo(int arr[], int n){
 	
 	for(int i=0; i<n; i++){
@@ -63,29 +83,30 @@ int main(){
 		
 		cin >> opcion;
 		
-		cout << endl << endl;
-		
+		cout << endl << endl << "Antes" << endl << endl;
+		mostrarArreglo(numeros, elementos);
 		switch (opcion){
-			
 			case 'a':
 				interDirDer(copia, elementos);
-				mostrarArreglo(copia, elementos);
 				break;
 			case 'b':
 				interDirIz(copia, elementos);
-				mostrarArreglo(copia, elementos);
 				break;
 			case 'c':
-				
+				interDirSenial(copia, elementos);
 				break;
 			case 'd':
 				break;
 			case 'e':
-				cout << "Saliendo del programa...";
+				break;
+			default:
+				cout << "Indique una opcion valida.";
 				break;
 		}
+		cout << endl << endl << "Despues" << endl << endl;
+		mostrarArreglo(copia, elementos);
 		cout << endl << endl;
 	} while (opcion != 'e');
-	
+	cout << "Saliendo del programa...";
 	return 0;
 }
