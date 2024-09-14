@@ -14,6 +14,18 @@ void interDirDer(int arr[], int n){
 	}
 }
 
+void interDirIz(int arr[], int n){
+	
+	for(int i=n; i>0; i--){ 
+		for(int j=n-1; j>n-i; j--){
+			if(arr[j]<arr[j-1]){
+				int aux = arr[j];
+				arr[j] = arr[j-1];
+				arr[j-1] = aux;
+			}
+		}
+	}
+}
 void mostrarArreglo(int arr[], int n){
 	
 	for(int i=0; i<n; i++){
@@ -60,8 +72,11 @@ int main(){
 				mostrarArreglo(copia, elementos);
 				break;
 			case 'b':
+				interDirIz(copia, elementos);
+				mostrarArreglo(copia, elementos);
 				break;
 			case 'c':
+				
 				break;
 			case 'd':
 				break;
