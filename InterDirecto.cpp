@@ -4,7 +4,7 @@ using namespace std;
 void interDirDer(int arr[], int n){
 	
 	for(int i=0; i<n-1; i++){
-		for(int j=0; j<n-i; i++){
+		for(int j=0; j<n-i; j++){
 			if(arr[j]>arr[j+1]){
 				int aux = arr[j];
 				arr[j]=arr[j+1];
@@ -14,12 +14,13 @@ void interDirDer(int arr[], int n){
 	}
 }
 
-void mostrarArreglo(int arr[]){
+void mostrarArreglo(int arr[], int n){
 	
-	for(int i=0; i<5; i++){
+	for(int i=0; i<n; i++){
 		cout << arr[i] << " ";
 	}
 }
+
 int main(){
 	
 	int elementos, num;
@@ -56,7 +57,7 @@ int main(){
 			
 			case 'a':
 				interDirDer(copia, elementos);
-				mostrarArreglo(copia);
+				mostrarArreglo(copia, elementos);
 				break;
 			case 'b':
 				break;
